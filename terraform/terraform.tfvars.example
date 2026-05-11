@@ -1,0 +1,4 @@
+snowflake_organization_name = "your_org"
+snowflake_account_name      = "your_account"
+snowflake_user              = "your_user"
+snowflake_password          = "your_password"

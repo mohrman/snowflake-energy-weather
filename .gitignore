@@ -216,3 +216,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+!*.tfvars.example
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Misc
+.DS_Store
