@@ -1,11 +1,10 @@
 # snowflake-energy-weather
 
-A data platform that ingests weather and energy price data into Snowflake, transforms it with dbt, and visualizes it in a Streamlit app.
-
 ## Stack
 
 - **Snowflake** — data warehouse
 - **Terraform** — infrastructure as code
+- **Airflow** — orchestration (local Docker Compose)
 - **dbt** — data transformation (staging → mart)
 - **Python** — data ingestion (Open-Meteo + ENTSO-E APIs)
 - **Streamlit in Snowflake** — dashboard
@@ -29,11 +28,26 @@ All Snowflake resources are managed via Terraform using the `snowflakedb/snowfla
 
 ```bash
 cd terraform
-
-# Create credentials file (gitignored)
-cp terraform.tfvars.example terraform.tfvars
-# Fill in your Snowflake credentials
-
+cp terraform.tfvars.example terraform.tfvars  # fill in your Snowflake credentials
 terraform init
 terraform apply
+```
+
+---
+
+## Orchestration (Airflow)
+
+DAGs are scheduled using Apache Airflow 2, running locally via Docker Compose.
+
+### Start
+
+1. `cp airflow/.env.example airflow/.env` and fill in your credentials
+2. `cd airflow && docker compose up airflow-init` — initialises the database (first time only)
+3. `docker compose up -d` — starts the scheduler and webserver
+4. Open http://localhost:8081 — login with `admin` / `admin`
+
+### Stop
+
+```bash
+cd airflow && docker compose down
 ```
