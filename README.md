@@ -1,7 +1,5 @@
 # snowflake-energy-weather
 
-A data platform that ingests weather and energy price data into Snowflake, transforms it with dbt, and visualizes it in a Streamlit app.
-
 ## Stack
 
 - **Snowflake** — data warehouse
