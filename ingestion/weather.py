@@ -65,7 +65,12 @@ copy_into = make_copy_into_task(COPY_SQL)
 
 
 def _fetch_city(city: dict, target_date: date) -> tuple:
-    url = "https://api.open-meteo.com/v1/forecast"
+    from datetime import date as date_type
+    url = (
+        "https://archive-api.open-meteo.com/v1/archive"
+        if target_date < date_type.today()
+        else "https://api.open-meteo.com/v1/forecast"
+    )
     params = {
         "latitude": city["lat"],
         "longitude": city["lon"],
