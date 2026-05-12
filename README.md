@@ -1,5 +1,11 @@
 # snowflake-energy-weather
 
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Terraform](https://img.shields.io/badge/Terraform-1.0+-623CE4?logo=terraform)
+![dbt](https://img.shields.io/badge/dbt-1.11-FF694B?logo=dbt)
+![Airflow](https://img.shields.io/badge/Airflow-2.9-017CEE?logo=apacheairflow)
+![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?logo=snowflake&logoColor=white)
+
 A portfolio data engineering project that ingests daily weather observations and electricity prices for Sweden, transforms them with dbt, and visualizes the relationship in a Streamlit app running inside Snowflake.
 
 All Snowflake infrastructure — databases, schemas, roles, warehouse, and the Streamlit app itself — is provisioned and managed with Terraform.
