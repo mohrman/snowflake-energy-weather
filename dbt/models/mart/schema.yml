@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mart_weather_energy
+    description: >
+      Daily weather and electricity price data joined by bidding zone.
+      One row per city per day, with daily aggregated energy prices.
+    columns:
+      - name: date
+        tests:
+          - not_null
+      - name: city
+        tests:
+          - not_null
+      - name: bidding_zone
+        tests:
+          - not_null
+      - name: price_avg_eur_mwh
+        description: Average day-ahead spot price for the bidding zone on this date

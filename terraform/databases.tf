@@ -28,7 +28,7 @@ resource "snowflake_grant_privileges_to_account_role" "transformer_raw_usage" {
 
 resource "snowflake_grant_privileges_to_account_role" "transformer_analytics_usage" {
   account_role_name = snowflake_account_role.transformer.name
-  privileges        = ["USAGE"]
+  privileges        = ["USAGE", "CREATE SCHEMA"]
   on_account_object {
     object_type = "DATABASE"
     object_name = snowflake_database.analytics.name
