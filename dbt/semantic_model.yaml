@@ -1,0 +1,86 @@
+name: Sweden Energy & Weather
+description: Daily energy prices and weather observations across Swedish bidding zones and cities.
+
+tables:
+  - name: mart_weather_energy
+    description: Daily weather observations joined with day-ahead energy prices per bidding zone.
+    base_table:
+      database: ANALYTICS_DB
+      schema: STAGING_MART
+      table: mart_weather_energy
+
+    dimensions:
+      - name: city
+        description: Swedish city name.
+        expr: city
+        data_type: TEXT
+
+      - name: bidding_zone
+        description: Nordpool bidding zone (SE1, SE2, SE3, SE4).
+        expr: bidding_zone
+        data_type: TEXT
+        sample_values:
+          - SE1
+          - SE2
+          - SE3
+          - SE4
+
+      - name: date
+        description: Calendar date.
+        expr: date
+        data_type: DATE
+
+    measures:
+      - name: avg_price
+        description: Average day-ahead energy price in EUR per MWh.
+        expr: price_avg_eur_mwh
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: min_price
+        description: Minimum hourly energy price in EUR per MWh for the day.
+        expr: price_min_eur_mwh
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: max_price
+        description: Maximum hourly energy price in EUR per MWh for the day.
+        expr: price_max_eur_mwh
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: mean_temperature
+        description: Daily mean temperature in degrees Celsius.
+        expr: temperature_mean_c
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: max_temperature
+        description: Daily maximum temperature in degrees Celsius.
+        expr: temperature_max_c
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: min_temperature
+        description: Daily minimum temperature in degrees Celsius.
+        expr: temperature_min_c
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: precipitation
+        description: Daily precipitation in millimeters.
+        expr: precipitation_mm
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: wind_speed
+        description: Daily maximum wind speed in km/h.
+        expr: wind_speed_max_kmh
+        data_type: NUMBER
+        default_aggregation: avg
+
+    time_dimensions:
+      - name: date
+        description: Calendar date used for time-based filtering and aggregation.
+        expr: date
+        data_type: DATE
