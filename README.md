@@ -4,6 +4,8 @@ A portfolio data engineering project that ingests daily weather observations and
 
 All Snowflake infrastructure — databases, schemas, roles, warehouse, and the Streamlit app itself — is provisioned and managed with Terraform.
 
+The app includes a semantic layer (Cortex Analyst) that allows asking questions about the data in plain English, such as *"What was the average energy price in SE3 in February?"* or *"Which city had the coldest day?"*
+
 **Data sources:**
 - [Open-Meteo](https://open-meteo.com/) — daily weather for 20 Swedish cities
 - [Nordpool](https://www.nordpoolgroup.com/) — day-ahead electricity prices for SE1–SE4
