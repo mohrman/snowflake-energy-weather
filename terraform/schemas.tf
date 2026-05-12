@@ -21,7 +21,7 @@ resource "snowflake_schema" "mart" {
 # INGESTION_ROLE — access to raw schemas
 resource "snowflake_grant_privileges_to_account_role" "ingestion_weather_usage" {
   account_role_name = snowflake_account_role.ingestion.name
-  privileges        = ["USAGE", "CREATE TABLE"]
+  privileges        = ["USAGE", "CREATE TABLE", "CREATE STAGE"]
   on_schema {
     schema_name = "\"${snowflake_database.raw.name}\".\"${snowflake_schema.raw_weather.name}\""
   }
@@ -29,7 +29,7 @@ resource "snowflake_grant_privileges_to_account_role" "ingestion_weather_usage" 
 
 resource "snowflake_grant_privileges_to_account_role" "ingestion_energy_usage" {
   account_role_name = snowflake_account_role.ingestion.name
-  privileges        = ["USAGE", "CREATE TABLE"]
+  privileges        = ["USAGE", "CREATE TABLE", "CREATE STAGE"]
   on_schema {
     schema_name = "\"${snowflake_database.raw.name}\".\"${snowflake_schema.raw_energy.name}\""
   }
