@@ -18,3 +18,8 @@ variable "snowflake_password" {
   type        = string
   sensitive   = true
 }
+
+variable "snowflake_username" {
+  description = "Snowflake username to grant roles to"
+  type        = string
+}
