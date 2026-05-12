@@ -1,0 +1,21 @@
+name: 'snowflake_energy_weather'
+version: '1.0.0'
+profile: 'snowflake_energy_weather'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  snowflake_energy_weather:
+    staging:
+      +materialized: view
+    mart:
+      +materialized: table

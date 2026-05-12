@@ -1,0 +1,13 @@
+snowflake_energy_weather:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ORGANIZATION_NAME') }}-{{ env_var('SNOWFLAKE_ACCOUNT_NAME') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: TRANSFORMER_ROLE
+      database: ANALYTICS_DB
+      warehouse: ENERGY_WEATHER_WH
+      schema: STAGING
+      threads: 4

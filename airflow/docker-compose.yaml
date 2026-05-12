@@ -57,6 +57,7 @@ services:
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
       - ../ingestion:/opt/airflow/ingestion
+      - ../dbt:/opt/airflow/dbt
     restart: always
 
   airflow-webserver:
@@ -81,6 +82,7 @@ services:
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
       - ../ingestion:/opt/airflow/ingestion
+      - ../dbt:/opt/airflow/dbt
     ports:
       - "8081:8080"
     healthcheck:
