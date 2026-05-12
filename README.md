@@ -2,6 +2,8 @@
 
 A portfolio data engineering project that ingests daily weather observations and electricity prices for Sweden, transforms them with dbt, and visualizes the relationship in a Streamlit app running inside Snowflake.
 
+All Snowflake infrastructure — databases, schemas, roles, warehouse, and the Streamlit app itself — is provisioned and managed with Terraform.
+
 **Data sources:**
 - [Open-Meteo](https://open-meteo.com/) — daily weather for 20 Swedish cities
 - [Nordpool](https://www.nordpoolgroup.com/) — day-ahead electricity prices for SE1–SE4
